@@ -24,7 +24,7 @@ Get everything you need, starting from a clean area:
  cmsenv
  git cms-init
  cd $CMSSW_BASE/src 
- git clone https://github.com/cms-analysis/flashgg flashgg
+ git clone https://github.com/CMSttHggAnalysis/flashgg_ttHgg flashgg
  source flashgg/setup.sh
  ```
 Now if everything looks reasonable, you can build:
