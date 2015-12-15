@@ -1,4 +1,6 @@
-flashgg
+flashgg_ttHgg
+=======
+Copied from the cms-analysis/flashgg on 14th December 2015 for specific modification to the ttHgg analysis
 =======
 
 Before you start, **please take note** of these warnings and comments:
