@@ -26,7 +26,7 @@ echo
 echo "You should have checked out from CMSttHggAnalysis/flashgg_ttHgg. Renaming this to upstream for convenience of existing developers..."
 cd $CMSSW_BASE/src/flashgg
 git remote rename origin upstream
-git remote set-url --push upstream DISALLOWED
+#git remote set-url --push upstream DISALLOWED
 GITHUBUSERNAME=`git config user.github`
 echo "Setting up a new origin repo, assuming your fork name is ${GITHUBUSERNAME} - check this!"
 git remote add origin git@github.com:${GITHUBUSERNAME}/flashgg_ttHgg.git
