@@ -11,13 +11,13 @@ Instructions modified from the flashgg instructions :
 * **N.B.** The branch cms-analysis_flashgg_20151214 is same as the cms-analysis/flashgg master branch on 14th Dec 2015. Comparisons can be made to that branch to see the changes made for ttHgg analysis. Do not modify that branch.
 * **N.B.** Make sure you are on lxplus6 or otherwise using an SLC6 machine. Make sure SCRAM_ARCH is slc6_amd64_gcc491.
 * **N.B.** While cloning into your own area, use the folder name 'flashgg' to keep the setup consistent with the flashgg setup.
-* **N.N.** The setup script will check out many packages and take a while!
+* **N.B.** The setup script will check out many packages and take a while!
 * **N.B.** You can ignore "error: addinfo_cache" lines. 
 * **N.B.** This is to set up the latest area in a self-consistent way. 
 * **N.B.** More instructions on using flashgg :  https://twiki.cern.ch/twiki/bin/viewauth/CMS/FLASHggFramework
 * **N.B.** Actual flashgg git : https://github.com/cms-analysis/flashgg
 
-Get everything you need, starting from a clean area:
+Get everything you need, starting from a clean area **USE A DIFFERENT FOLDER/AREA COMPARED TO THE RGULAR flashgg CODE AREA**:
  ```
  cmsrel CMSSW_7_4_15
  cd CMSSW_7_4_15/src
