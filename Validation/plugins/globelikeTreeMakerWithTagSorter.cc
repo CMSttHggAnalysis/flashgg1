@@ -217,13 +217,13 @@ private:
 //
 FlashggTreeMakerWithTagSorter::FlashggTreeMakerWithTagSorter( const edm::ParameterSet &iConfig ):
     vertexToken_( consumes<View<reco::Vertex> >( iConfig.getUntrackedParameter<InputTag> ( "VertexTag", InputTag( "offlineSlimmedPrimaryVertices" ) ) ) ),
-    genParticleToken_( consumes<View<reco::GenParticle> >( iConfig.getUntrackedParameter<InputTag> ( "GenParticleTag", InputTag( "prunedGenParticles" ) ) ) ),
+    genParticleToken_( consumes<View<reco::GenParticle> >( iConfig.getUntrackedParameter<InputTag> ( "GenParticleTag", InputTag( "flashggPrunedGenParticles" ) ) ) ),
     vertexCandidateMapTokenDz_( consumes<VertexCandidateMap>( iConfig.getParameter<InputTag>( "VertexCandidateMapTagDz" ) ) ),
     vertexCandidateMapTokenAOD_( consumes<VertexCandidateMap>( iConfig.getParameter<InputTag>( "VertexCandidateMapTagAOD" ) ) ),
     jetTokenDz_( consumes<View<flashgg::Jet> >( iConfig.getParameter<InputTag>( "JetTagDz" ) ) ),
     diPhotonToken_( consumes<View<flashgg::DiPhotonCandidate> >( iConfig.getParameter<InputTag> ( "DiPhotonTag" ) ) ),
     METToken_( consumes<View<pat::MET> >( iConfig.getUntrackedParameter<InputTag> ( "METTag", InputTag( "slimmedMETs" ) ) ) ),
-    PileUpToken_( consumes<View<PileupSummaryInfo> >( iConfig.getUntrackedParameter<InputTag> ( "PileUpTag", InputTag( "addPileupInfo" ) ) ) ),
+    PileUpToken_( consumes<View<PileupSummaryInfo> >( iConfig.getUntrackedParameter<InputTag> ( "PileUpTag", InputTag( "slimmedAddPileupInfo" ) ) ) ),
     TagSorterToken_( consumes<edm::OwnVector<flashgg::DiPhotonTagBase> >( iConfig.getUntrackedParameter<InputTag> ( "TagSorter",
                      InputTag( "flashggTagSorter" ) ) ) )
 {
@@ -256,8 +256,10 @@ FlashggTreeMakerWithTagSorter::analyze( const edm::Event &iEvent, const edm::Eve
     iEvent.getByToken( genParticleToken_, genParticles );
 //	const PtrVector<reco::GenParticle>& gens = genParticles->ptrVector();
 
-    Handle<View<flashgg::Jet> > jetsDz;
-    iEvent.getByToken( jetTokenDz_, jetsDz );
+    //Handle<View<flashgg::Jet> > jetsDz;
+    //iEvent.getByToken( jetTokenDz_, jetsDz );
+    Handle<std::vector<std::vector<flashgg::Jet>>> jetsDz;
+    iEvent.getByLabel("flashggFinalJets", jetsDz);
 //	const PtrVector<flashgg::Jet>& jetPointersDz = jetsDz->ptrVector();
 
     Handle<View<flashgg::DiPhotonCandidate> > diPhotons;
@@ -346,10 +348,10 @@ FlashggTreeMakerWithTagSorter::analyze( const edm::Event &iEvent, const edm::Eve
         njets15 = 0.;
         njets20 = 0.;
 
-        for( UInt_t jetLoop = 0; jetLoop < jetsDz->size() ; jetLoop++ ) {
-
-            Float_t et = jetsDz->ptrAt( jetLoop )->et();
-
+        for( UInt_t jetLoop = 0; jetLoop < jetsDz->at(0).size() ; jetLoop++ ) {
+            
+            Float_t et = jetsDz->at(0)[ jetLoop ].et();
+            
             if( et > 10. ) {
                 njets10 = njets10 + 1.;
             }
