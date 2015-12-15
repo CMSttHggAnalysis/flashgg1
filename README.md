@@ -29,7 +29,7 @@ Instructions to set up
 **IMPORTANT : USE A DIFFERENT DIRECTORY / AREA COMPARED TO THE REGULAR flashgg CODE AREA TO NOT MIX UP THE TWO**
 
   The commands to setup:
- ```
+  ```
  cmsrel CMSSW_7_4_15
  cd CMSSW_7_4_15/src
  cmsenv
@@ -39,12 +39,12 @@ Instructions to set up
  source flashgg/setup.sh
  ```
 Now if everything looks reasonable, you can build:
- ```
+  ```
  cd $CMSSW_BASE/src
  scram b -j 9
  ```
 And a very basic workflow test:
- ```
+  ```
  cd $CMSSW_BASE/src/flashgg
  cmsRun Validation/python/flashgg_globeliketree_tagsorter_producer.py
 
@@ -71,26 +71,26 @@ To use this repository to make changes and commit them to git:
 * **Remotes**
  
   Remotes are the repositories that are hosted on the servers that are linked to the one you are working on. These inlude the original repository "CMSttHggAnalysis/flashgg_ttHgg" that is usually named as **upstream** and also your fork of the repository "<username>/flashgg_ttHgg" which is usually named as **origin**. Here the paths to the repositories contain "https://github.com/" in the beginning. The setup script is configured to make the repository of the other collaborators also available. To see their names:
-```
+  ```
  git remote -v
  ```
  
-* *Sync / Merge upstream repository with your local fork**
+* **Sync / Merge upstream repository with your local fork**
   See details at https://help.github.com/articles/syncing-a-fork/
   Brief instructions :
   Sync between changes in upstream repository while retaining your changes:
-```
-git fetch upstream
-#<switch to branch "master">
-git checkout master
-#<merge>
-git merge upstream/master
-
-#git pull is a convenient shortcut for completing both git fetch and git mergein the same command:
-git pull <remotename> <branchname>
-#<example:>
-git pull origin master
-```
+  ```
+  git fetch upstream
+  #<switch to branch "master">
+  git checkout master
+  #<merge>
+  git merge upstream/master
+  
+  #git pull is a convenient shortcut for completing both git fetch and git mergein the same command:
+  git pull <remotename> <branchname>
+  #<example:>
+  git pull origin master
+  ```
 
 * **Make changes and commit them**
 
